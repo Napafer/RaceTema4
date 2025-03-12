@@ -426,9 +426,9 @@ cran %>%
   mutate(cum_traffic = cumsum(total_traffic) / sum(total_traffic)) %>%  
   filter(cum_traffic <= 0.9) %>%  
   ggplot(aes(x = country, y = total_traffic)) +  
-  geom_point() +  # Usamos puntos en el gráfico
+  geom_point() +
   
-  labs(x = "Country", y = "Traffic Generated (Bytes)", title = "Countries with Top 90% Download Traffic")  # Etiquetas
+  labs(x = "Country", y = "Trafico Generado (Bytes)", title = "Pises con el 90% Download Traffic")  
 
 
 ```
