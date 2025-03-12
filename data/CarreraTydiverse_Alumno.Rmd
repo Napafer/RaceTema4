@@ -383,6 +383,9 @@ cran %>%
 
 ```{r}
 
+cran %>%
+  select(ip_id, country, package, size) %>% 
+  mutate(size_mb = size / (2^20)) 
 
 
 ```
