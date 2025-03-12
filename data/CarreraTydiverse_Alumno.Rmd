@@ -472,6 +472,16 @@ La columna `grade` es la calificación y las dos siguientes el número de estudi
 ¿ Cuáles son las variables ?. Transfórmalo en un conjunto `tidy` con las variables, `grade, sex y count`
 ```{r}
 
+load("datostidyr.Rdata")  
+head(students)
+library(tidyr)
+ students %>%
+  pivot_longer(cols = c(male, female), 
+               names_to = "sex", 
+               values_to = "count")
+
+
+
 
 
 ```
