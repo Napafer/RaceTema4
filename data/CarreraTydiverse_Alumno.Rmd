@@ -417,8 +417,18 @@ cran %>%
 `cran%>%...+geom_point()`
 
 ```{r}
+library(ggplot2)
 
-
+cran %>%
+  group_by(country) %>%  
+  summarise(total_traffic = sum(size)) %>%  
+  arrange(desc(total_traffic)) %>%  
+  mutate(cum_traffic = cumsum(total_traffic) / sum(total_traffic)) %>%  
+  filter(cum_traffic <= 0.9) %>%  
+  ggplot(aes(x = country, y = total_traffic)) +  
+  geom_point() +  # Usamos puntos en el gráfico
+  
+  labs(x = "Country", y = "Traffic Generated (Bytes)", title = "Countries with Top 90% Download Traffic")  # Etiquetas
 
 
 ```
