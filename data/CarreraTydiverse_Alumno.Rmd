@@ -333,6 +333,19 @@ top_counts
 
 
 
+top_counts_sorted <- cran %>%
+ 
+  summarise(threshold = quantile(size, probs = 0.99)) %>%
+  pull(threshold) -> threshold_value  
+
+
+top_counts_sorted <- cran %>%
+  filter(size > threshold_value) %>% 
+  group_by(package) %>%  
+  summarise(count = n()) %>%  
+  arrange(desc(count))  
+
+top_counts_sorted
 
 
 
